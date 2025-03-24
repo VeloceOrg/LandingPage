@@ -2,14 +2,108 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    /* Primary color - Indigo */
+    --color-primary: 79 70 229; /* #4F46E5 - Indigo 600 */
+    --color-primary-foreground: 255 255 255;
+    --color-primary-50: 238 242 255;
+    --color-primary-100: 224 231 255;
+    --color-primary-200: 199 210 254;
+    --color-primary-300: 165 180 252;
+    --color-primary-400: 129 140 248;
+    --color-primary-500: 99 102 241;
+    --color-primary-600: 79 70 229;
+    --color-primary-700: 67 56 202;
+    --color-primary-800: 55 48 163;
+    --color-primary-900: 49 46 129;
+
+    /* Secondary color - Violet */
+    --color-secondary: 124 58 237; /* #7C3AED - Violet 600 */
+    --color-secondary-foreground: 255 255 255;
+    --color-secondary-50: 245 243 255;
+    --color-secondary-100: 237 233 254;
+    --color-secondary-200: 221 214 254;
+    --color-secondary-300: 196 181 253;
+    --color-secondary-400: 167 139 250;
+    --color-secondary-500: 139 92 246;
+    --color-secondary-600: 124 58 237;
+    --color-secondary-700: 109 40 217;
+    --color-secondary-800: 91 33 182;
+    --color-secondary-900: 76 29 149;
+
+    /* Accent color - Cyan */
+    --color-accent: 6 182 212; /* #06B6D4 - Cyan 500 */
+    --color-accent-foreground: 255 255 255;
+
+    /* Focus ring color */
+    --color-focus: 99 102 241; /* #6366F1 - Indigo 500 */
+  }
+
+  .dark {
+    /* Adjust colors for dark mode */
+    --color-primary: 129 140 248; /* #818CF8 - Indigo 400 */
+    --color-primary-foreground: 255 255 255;
+    
+    /* Secondary color in dark mode */
+    --color-secondary: 167 139 250; /* #A78BFA - Violet 400 */
+    --color-secondary-foreground: 255 255 255;
+    
+    /* Accent color in dark mode */
+    --color-accent: 34 211 238; /* #22D3EE - Cyan 400 */
+    --color-accent-foreground: 255 255 255;
+  }
+}
+
+/* Additional utility classes */
+@layer utilities {
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+  .animation-delay-500 {
+    animation-delay: 500ms;
+  }
+  .animation-delay-700 {
+    animation-delay: 700ms;
+  }
+  .animation-delay-1000 {
+    animation-delay: 1000ms;
+  }
+  
+  .hover\:scale-103:hover {
+    transform: scale(1.03);
+  }
+  
+  .active\:scale-98:active {
+    transform: scale(0.98);
+  }
+  
+  .typing-animation {
+    display: inline-block;
+    overflow: hidden;
+    border-right: 2px solid currentColor;
+    white-space: nowrap;
+    animation: typing 2s steps(20, end), blink-caret 0.75s step-end infinite;
+    width: 0;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: currentColor }
+  }
+}
+
 @keyframes typing {
   from { width: 0 }
   to { width: 100% }
-}
-
-.typing-animation {
-  display: inline-block;
-  overflow: hidden;
-  white-space: nowrap;
-  animation: typing 2s steps(30, end);
 }
