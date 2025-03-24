@@ -132,6 +132,26 @@ export const SunFilledIcon = ({
   </svg>
 );
 
+// giticon
+
+export const GitIcon = (props: IconSvgProps) => (
+  <svg
+    {...props}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M18 10a8 8 0 1 0-16 0 8 8 0 0 0 16 0Z" />
+    <path d="M12 10v6" />
+    <path d="M12 16h.01" />
+  </svg>
+);
+
+
 export const HeartFilledIcon = ({
   size = 24,
   width,
@@ -156,6 +176,7 @@ export const HeartFilledIcon = ({
     />
   </svg>
 );
+
 
 export const SearchIcon = (props: IconSvgProps) => (
   <svg
@@ -182,5 +203,116 @@ export const SearchIcon = (props: IconSvgProps) => (
       strokeLinejoin="round"
       strokeWidth="2"
     />
+  </svg>
+);
+
+export const RocketIcon = (props: IconSvgProps) => (
+  <svg
+    {...props}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
+    <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
+    <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
+    <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+  </svg>
+);
+
+export const NetworkIcon = (props: IconSvgProps) => (
+  <svg
+    {...props}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M9 2H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 2v20m6-20v20M3 8v8a2 2 0 0 0 2 2h4m-6-10h18M3 8a2 2 0 0 1 2-2h4m10 14h4a2 2 0 0 0 2-2v-4m-6 6h-4m10-6v8a2 2 0 0 1-2 2h-4" />
+  </svg>
+);
+
+export const ShieldIcon = (props: IconSvgProps) => (
+  <svg
+    {...props}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+    <path d="m9 12 2 2 4-4" />
+  </svg>
+);
+
+export const ScaleIcon = (props: IconSvgProps) => (
+  <svg
+    {...props}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M16 16h6m-6 0v6m0-6-6-6m4 0h6m-6 0V4m0 0L8 10M8 8H2m6 0V2m0 6L2 14" />
+  </svg>
+);
+
+export const TerminalIcon = (props: IconSvgProps) => (
+  <svg
+    {...props}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <polyline points="4 17 10 11 4 5" />
+    <line x1="12" y1="19" x2="20" y2="19" />
+  </svg>
+);
+
+export const SunIcon = (props: IconSvgProps) => (
+  <svg
+    {...props}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <circle cx="12" cy="12" r="5" />
+    <line x1="12" y1="1" x2="12" y2="3" />
+    <line x1="12" y1="21" x2="12" y2="23" />
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+    <line x1="1" y1="12" x2="3" y2="12" />
+    <line x1="21" y1="12" x2="23" y2="12" />
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+  </svg>
+);
+
+export const MoonIcon = (props: IconSvgProps) => (
+  <svg
+    {...props}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
   </svg>
 );
