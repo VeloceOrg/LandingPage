@@ -1,55 +1,117 @@
-# Next.js & HeroUI Template
+# Veloce
 
-This is a template for creating applications using Next.js 14 (pages directory) and HeroUI (v2).
+Modern, self-hostable deployment platform built with Next.js and HeroUI.
 
-[Try it on CodeSandbox](https://githubbox.com/heroui-inc/next-pages-template)
+---
 
-> Note: Since Next.js 14, the pages router is recommend migrating to the [new App Router](https://nextjs.org/docs/app) to leverage React's latest features
->
-> Read more: [Pages Router](https://nextjs.org/docs/pages)
+## 👤 Maintainer(s)
 
-## Technologies Used
+| Name     | Role               | Focus                                  |
+|----------|--------------------|----------------------------------------|
+| Emily    | Full Stack         | Frontend, Backend, DevOps, Design      |
+
+
+---
+
+## 🚀 Quick Start
+
+```bash
+# Clone the repository
+git clone https://github.com/veloceorg/LandingPage
+
+# Install dependencies
+bun install
+
+# Setup environment variables
+cp .env.example .env.local
+
+# Start development server
+bun run dev
+```
+
+## 🧱 Project Structure
+
+### Core Components
+- `/components` - UI Components
+  - `animated-logo.tsx` - Animated brand logo with hover effects
+  - `footer.tsx` - Global footer with Better Stack status integration
+  - `navbar.tsx` - Main navigation with theme switching
+  - `icons.tsx` - Shared icon components
+  - `/ui` - Reusable UI elements
+    - `background-paths.tsx` - Decorative background patterns
+    - `floating-icons.tsx` - Animated floating elements
+
+### Configuration
+- `/config` - App Configuration
+  - `site.ts` - Site metadata, navigation, and links
+  - `fonts.ts` - Typography settings
+
+### API & Integration
+- `/lib` - Core Libraries
+  - `betterstack.ts` - Better Stack status monitoring integration
+- `/pages/api` - API Routes
+  - `status.ts` - System status endpoint
+  - `hello.ts` - Health check endpoint
+
+### Pages & Layouts
+- `/layouts` - Page Layouts
+  - `default.tsx` - Main layout wrapper
+  - `head.tsx` - SEO management
+- `/pages` - Application Routes
+  - `brand.tsx` - Brand guidelines
+  - `terms.tsx` - Terms of service
+  - `privacy.tsx` - Privacy policy
+
+## 🛠 Tech Stack
 
 - [Next.js 14](https://nextjs.org/docs/getting-started)
-- [HeroUI](https://heroui.com)
+- [HeroUI v2](https://heroui.com)
 - [Tailwind CSS](https://tailwindcss.com)
-- [Tailwind Variants](https://tailwind-variants.org)
 - [TypeScript](https://www.typescriptlang.org)
 - [Framer Motion](https://www.framer.com/motion)
 - [next-themes](https://github.com/pacocoursey/next-themes)
 
-## How to Use
+## 🔧 Environment Setup
 
-To create a new project based on this template using `create-next-app`, run the following command:
-
-```bash
-npx create-next-app -e https://github.com/heroui-inc/next-pages-template
+Required environment variables:
+```env
+# Better Stack Integration
+BETTER_STACK_API_KEY=your_api_key
+BETTER_STACK_STATUS_PAGE_ID=your_status_page_id
 ```
 
-### Install dependencies
+### Using pnpm
 
-You can use one of them `npm`, `yarn`, `pnpm`, `bun`, Example using `npm`:
-
-```bash
-npm install
-```
-
-### Run the development server
-
-```bash
-npm run dev
-```
-
-### Setup pnpm (optional)
-
-If you are using `pnpm`, you need to add the following code to your `.npmrc` file:
-
+If using pnpm, add to `.npmrc`:
 ```bash
 public-hoist-pattern[]=*@heroui/*
 ```
 
-After modifying the `.npmrc` file, you need to run `pnpm install` again to ensure that the dependencies are installed correctly.
+## 👥 Contributing
 
-## License
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'feat: add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-Licensed under the [MIT license](https://github.com/heroui-inc/next-pages-template/blob/main/LICENSE).
+## 📝 License
+
+Licensed under the [MIT license](LICENSE).
+
+## 🤝 Support
+
+- Documentation: [docs.veloce.dev](https://docs.veloce.sh)
+- Discord: [Join our community](https://discord.gg/veloce)
+- Twitter: [@veloce](https://twitter.com/veloce)
+- GitHub: [veloceorg](https://github.com/veloceorg)
+
+## 🛡 Repo Status
+
+Public — WIP
+
+---
+
+<p align="center">
+  Built with ❤️ by the Veloce team
+</p>
