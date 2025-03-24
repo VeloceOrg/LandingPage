@@ -32,9 +32,9 @@ export const Footer = () => {
       title: "Company",
       links: [
         { label: "About", href: "/about" },
-        { label: "Blog", href: "/blog" },
         { label: "Careers", href: "/careers" },
         { label: "Contact", href: "/contact" },
+        { label: "Branding Kit", href: "/brand" },
       ],
     },
     {

@@ -17,9 +17,9 @@ export const siteConfig = {
       href: "/docs",
     },
     {
-      label: "Blog",
-      href: "/blog",
-    }
+      label: "About",
+      href: "/about",
+    },
   ],
   navMenuItems: [
     {
@@ -48,8 +48,17 @@ export const siteConfig = {
     },
   ],
   links: {
-    github: "https://github.com/veloce",
+    github: "https://github.com/veloceorg",
     twitter: "https://twitter.com/veloce",
     docs: "https://docs.veloce.dev",
   },
+  footerLinks: [
+    {
+      title: "Legal",
+      links: [
+        { label: "Terms", href: "/terms" },
+        { label: "Privacy", href: "/privacy" },
+      ],
+    },
+  ],
 };

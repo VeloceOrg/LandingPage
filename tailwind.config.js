@@ -57,6 +57,9 @@ module.exports = {
         "gradient-x": "gradient-x 5s ease infinite",
         "pulse-dot": "pulse-dot 3s infinite",
         "typing": "typing 2s steps(20, end)",
+        'float-slow': 'float-slow 10s ease-in-out infinite',
+        'float-slow-reverse': 'float-slow-reverse 10s ease-in-out infinite',
+        'fade-in-up': 'fade-in-up 0.5s ease-out forwards'
       },
       keyframes: {
         "fade-in": {
@@ -95,6 +98,18 @@ module.exports = {
           "0%": { width: "0%" },
           "100%": { width: "100%" }
         },
+        'float-slow': {
+          '0%, 100%': { transform: 'translateX(0) translateY(0)', opacity: '0.3' },
+          '50%': { transform: 'translateX(100px) translateY(20px)', opacity: '0.5' }
+        },
+        'float-slow-reverse': {
+          '0%, 100%': { transform: 'translateX(0) translateY(0)', opacity: '0.3' },
+          '50%': { transform: 'translateX(-100px) translateY(20px)', opacity: '0.5' }
+        },
+        'fade-in-up': {
+          '0%': { opacity: '0', transform: 'translateY(10px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' }
+        }
       },
     },
   },
