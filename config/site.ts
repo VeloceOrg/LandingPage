@@ -51,6 +51,8 @@ export const siteConfig = {
     github: "https://github.com/veloceorg",
     twitter: "https://twitter.com/veloce",
     docs: "https://docs.veloce.dev",
+    discord: "https://discord.gg/veloce",
+    sponsor: "https://github.com/sponsors/veloceorg",
   },
   footerLinks: [
     {

@@ -5,18 +5,28 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Logo } from "@/components/icons";
 import { siteConfig } from "@/config/site";
+import { useStatus } from '@/hooks/useStatus';
 
 export const Footer = () => {
-  const [uptime, setUptime] = useState(99.98);
+  const { status, isLoading } = useStatus();
   const [isHovered, setIsHovered] = useState(false);
 
-  // Simulate uptime changes
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setUptime(99.9 + Math.random() * 0.1);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
+  const getStatusColor = (indicator?: string) => {
+    switch (indicator) {
+      case 'none':
+        return 'green';
+      case 'minor':
+        return 'yellow';
+      case 'major':
+        return 'orange';
+      case 'critical':
+        return 'red';
+      default:
+        return 'green';
+    }
+  };
+
+  const statusColor = getStatusColor(status?.status?.indicator);
 
   const footerLinks = [
     {
@@ -80,24 +90,30 @@ export const Footer = () => {
 
             {/* Uptime status widget */}
             <motion.div
-              className="mt-6 flex items-center gap-2 w-fit rounded-full px-4 py-2 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-100 dark:border-green-800/30"
+              className={`mt-6 flex items-center gap-2 w-fit rounded-full px-4 py-2 bg-${statusColor}-50/50 dark:bg-${statusColor}-900/20 border border-${statusColor}-100 dark:border-${statusColor}-800/30`}
               whileHover={{ scale: 1.02 }}
               onHoverStart={() => setIsHovered(true)}
               onHoverEnd={() => setIsHovered(false)}
             >
               <span className="relative flex h-2.5 w-2.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
-                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-green-500"></span>
+                <span className={`absolute inline-flex h-full w-full animate-ping rounded-full bg-${statusColor}-400 opacity-75`}></span>
+                <span className={`relative inline-flex h-2.5 w-2.5 rounded-full bg-${statusColor}-500`}></span>
               </span>
               <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                System Status: 
-                <motion.span 
-                  className="ml-1 text-green-600 dark:text-green-400"
-                  animate={{ scale: isHovered ? [1, 1.05, 1] : 1 }}
-                  transition={{ duration: 1, repeat: isHovered ? Infinity : 0 }}
-                >
-                  {uptime.toFixed(2)}% uptime
-                </motion.span>
+                {isLoading ? (
+                  "Checking status..."
+                ) : (
+                  <>
+                    System Status:{" "}
+                    <motion.span 
+                      className={`ml-1 text-${statusColor}-600 dark:text-${statusColor}-400`}
+                      animate={{ scale: isHovered ? [1, 1.05, 1] : 1 }}
+                      transition={{ duration: 1, repeat: isHovered ? Infinity : 0 }}
+                    >
+                      {status?.metrics?.uptime?.toFixed(2) ?? "99.99"}% uptime
+                    </motion.span>
+                  </>
+                )}
               </span>
             </motion.div>
           </div>
