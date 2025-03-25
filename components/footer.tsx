@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { Logo } from "@/components/icons";
 import { siteConfig } from "@/config/site";
 import { useStatus } from '@/hooks/useStatus';
+import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@heroui/dropdown";
 
 export const Footer = () => {
   const { status, isLoading } = useStatus();
@@ -53,7 +54,6 @@ export const Footer = () => {
         { label: "Community", href: "/community" },
         { label: "Status", href: "/status" },
         { label: "Support", href: "/support" },
-        { label: "Terms", href: "/terms" },
       ],
     },
   ];
@@ -135,6 +135,35 @@ export const Footer = () => {
                     </Link>
                   </li>
                 ))}
+                {group.title === "Company" && (
+                  <li>
+                    <Dropdown>
+                      <DropdownTrigger>
+                        <button className="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors text-left w-full">
+                          Legal ↗
+                        </button>
+                      </DropdownTrigger>
+                      <DropdownMenu 
+                        aria-label="Legal links" 
+                        className="w-[240px] p-2 bg-white/90 backdrop-blur-md dark:bg-gray-900/90 border border-gray-200 dark:border-gray-800"
+                      >
+                        {siteConfig.legalLinks.map((link) => (
+                          <DropdownItem
+                            key={link.href}
+                            className="text-sm"
+                          >
+                            <Link 
+                              href={link.href}
+                              className="flex w-full px-2 py-1.5 text-gray-700 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 transition-colors"
+                            >
+                              {link.label}
+                            </Link>
+                          </DropdownItem>
+                        ))}
+                      </DropdownMenu>
+                    </Dropdown>
+                  </li>
+                )}
               </ul>
             </div>
           ))}

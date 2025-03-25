@@ -63,4 +63,14 @@ export const siteConfig = {
       ],
     },
   ],
+  legalLinks: [
+    { label: "Terms of Service", href: "/terms" },
+    { label: "Privacy Policy", href: "/privacy" },
+    { label: "Cookie Policy", href: "/cookie-policy" },
+    { label: "DMCA Policy", href: "/dmca" },
+    { label: "Acceptable Use", href: "/acceptable-use" },
+    { label: "DPA", href: "/dpa" },
+    { label: "SLA", href: "/sla" },
+    { label: "Sub-processors", href: "/sub-processors" },
+  ],
 };
