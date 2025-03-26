@@ -1,5 +1,6 @@
 import { Link } from "@heroui/link";
 import { button as buttonStyles } from "@heroui/theme";
+import { motion } from "framer-motion";
 
 import { RocketIcon, NetworkIcon, ShieldIcon, ScaleIcon, GitIcon, TerminalIcon } from "@/components/icons";
 import DefaultLayout from "@/layouts/default";
@@ -36,16 +37,44 @@ export default function IndexPage() {
           {/* Main Heading with animated gradient */}
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight opacity-0 animate-fade-in" style={{animationFillMode: "forwards"}}>
             <span className="block opacity-0 translate-y-4 animate-slide-up" style={{animationDelay: "100ms", animationFillMode: "forwards"}}>
-              The <span className="relative inline-block">
-                <span className="absolute -inset-1 rounded-lg bg-gradient-to-r from-primary/20 to-violet-500/20 blur"></span>
-                <span className="relative text-primary">modern</span>
-              </span> way to
+              The{" "}
+              <motion.span 
+                className="relative inline-block"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
+                <motion.span 
+                  className="absolute -inset-1 rounded-lg bg-gradient-to-r from-primary/20 to-violet-500/20 blur"
+                  animate={{ 
+                    opacity: [0.5, 0.8, 0.5],
+                    scale: [1, 1.05, 1],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+                <span className="relative bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-violet-600 dark:from-primary-400 dark:to-violet-400 animate-gradient-x">
+                  modern
+                </span>
+              </motion.span>
+              {" "}way to
             </span>
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-violet-500 animate-gradient-x block mt-2 opacity-0 translate-y-4 animate-slide-up" style={{animationDelay: "300ms", animationFillMode: "forwards"}}>
-              deploy anything
-            </span>
+            
+            <motion.span 
+              className="block mt-2"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-violet-500 animate-gradient-x">
+                deploy anything
+              </span>
+            </motion.span>
           </h1>
-          
+          <br />
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto opacity-0 animate-fade-in" style={{animationDelay: "500ms", animationFillMode: "forwards"}}>
             Self-hostable platform with global edge network, zero-config networking, 
             and hardware isolation. If it runs on Linux, it runs on Veloce.
@@ -54,25 +83,125 @@ export default function IndexPage() {
 
         {/* Terminal demo */}
         <div className="w-full max-w-lg mx-auto mt-10 mb-8 overflow-hidden rounded-lg border border-gray-200 dark:border-gray-800 shadow-lg opacity-0 translate-y-4 animate-slide-up" style={{animationDelay: "200ms", animationFillMode: "forwards"}}>
-          <div className="flex items-center bg-gray-100 dark:bg-gray-800 px-4 py-2">
+          {/* Terminal header */}
+          <div className="flex items-center justify-between bg-gray-100 dark:bg-gray-800 px-4 py-2">
             <div className="flex space-x-2">
               <div className="w-3 h-3 rounded-full bg-red-500"></div>
               <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
               <div className="w-3 h-3 rounded-full bg-green-500"></div>
             </div>
-            <div className="ml-4 text-sm text-gray-500 dark:text-gray-400">terminal</div>
-          </div>
-          <div className="bg-gray-900 p-4 font-mono text-sm text-gray-200">
-            <div className="flex items-start">
-              <span className="text-green-400 mr-2">$</span>
-              <div className="flex-1">
-                <span className="typing-animation">git push veloce main</span>
-                <div className="mt-2 text-gray-400">→ Deploying to production...</div>
-                <div className="text-gray-400">→ Building application...</div>
-                <div className="text-gray-400">→ Running tests...</div>
-                <div className="text-green-400 mt-1">✓ Deployed to production! https://myapp.veloce.dev</div>
-              </div>
+            <div className="flex items-center space-x-2">
+              <div className="text-sm text-gray-500 dark:text-gray-400 font-mono">~/myapp</div>
+              <motion.div 
+                animate={{ opacity: [0, 1] }}
+                transition={{ duration: 1, repeat: Infinity, repeatDelay: 1 }}
+                className="w-2 h-4 bg-primary-400/50"
+              />
             </div>
+          </div>
+
+          {/* Terminal content */}
+          <div className="bg-gray-900 p-4 font-mono text-sm">
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+              className="flex items-start"
+            >
+              <span className="text-green-400 mr-2">$</span>
+              <motion.div className="flex-1">
+                <motion.span
+                  initial={{ width: 0 }}
+                  animate={{ width: "100%" }}
+                  transition={{ 
+                    duration: 1.5,
+                    ease: "easeInOut",
+                  }}
+                  className="inline-block whitespace-nowrap overflow-hidden"
+                  style={{ borderRight: "2px solid #63E6BE" }}
+                >
+                  git push veloce main
+                </motion.span>
+
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  transition={{ delay: 1.8 }}
+                  className="mt-2 space-y-1"
+                >
+                  <motion.div
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 2 }}
+                    className="text-gray-400"
+                  >
+                    → Deploying to production...
+                  </motion.div>
+                  
+                  <motion.div
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 2.3 }}
+                    className="text-gray-400"
+                  >
+                    → Building application...
+                    <motion.span
+                      initial={{ width: 0 }}
+                      animate={{ width: "100%" }}
+                      transition={{ delay: 2.4, duration: 1 }}
+                      className="ml-2 inline-block bg-gray-700 h-1 w-24 rounded"
+                    />
+                  </motion.div>
+                  
+                  <motion.div
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 2.6 }}
+                    className="text-gray-400"
+                  >
+                    → Running tests...
+                  </motion.div>
+                  
+                  <motion.div
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 3 }}
+                    className="flex items-center text-green-400"
+                  >
+                    <motion.svg
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ delay: 3.2, type: "spring" }}
+                      className="w-4 h-4 mr-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                    </motion.svg>
+                    <span>Deployed to production! </span>
+                    <Link 
+                      href="https://myapp.veloce.dev"
+                      className="ml-1 text-primary-400 hover:text-primary-300 transition-colors"
+                    >
+                      https://myapp.veloce.dev
+                    </Link>
+                  </motion.div>
+                </motion.div>
+
+                <motion.span
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ 
+                    delay: 3.5,
+                    duration: 0.6,
+                    repeat: Infinity,
+                    repeatType: "reverse"
+                  }}
+                  className="inline-block w-2 h-4 ml-1 bg-gray-400"
+                />
+              </motion.div>
+            </motion.div>
           </div>
         </div>
 
