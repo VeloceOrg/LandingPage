@@ -7,6 +7,20 @@ export const siteConfig = {
     {
       label: "Features",
       href: "/features",
+      children: [
+        {
+          label: "Overview",
+          href: "/features"
+        },
+        {
+          label: "Networking & VPN",
+          href: "/features/networking"
+        },
+        {
+          label: "Databases",
+          href: "/features/databases"
+        }
+      ]
     },
     {
       label: "Pricing",

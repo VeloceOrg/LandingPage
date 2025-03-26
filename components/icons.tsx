@@ -126,8 +126,8 @@ export const SunFilledIcon = ({
     {...props}
   >
     <g fill="currentColor">
-      <path d="M19 12a7 7 0 11-7-7 7 7 0 017 7z" />
-      <path d="M12 22.96a.969.969 0 01-1-.96v-.08a1 1 0 012 0 1.038 1.038 0 01-1 1.04zm7.14-2.82a1.024 1.024 0 01-.71-.29l-.13-.13a1 1 0 011.41-1.41l.13.13a1 1 0 010 1.41.984.984 0 01-.7.29zm-14.28 0a1.024 1.024 0 01-.71-.29 1 1 0 010-1.41l.13-.13a1 1 0 011.41 1.41l-.13.13a1 1 0 01-.7.29zM22 13h-.08a1 1 0 010-2 1.038 1.038 0 011.04 1 .969.969 0 01-.96 1zM2.08 13H2a1 1 0 010-2 1.038 1.038 0 011.04 1 .969.969 0 01-.96 1zm16.93-7.01a1.024 1.024 0 01-.71-.29 1 1 0 010-1.41l.13-.13a1 1 0 011.41 1.41l-.13.13a.984.984 0 01-.7.29zm-14.02 0a1.024 1.024 0 01-.71-.29l-.13-.14a1 1 0 011.41-1.41l.13.13a1 1 0 010 1.41.97.97 0 01-.7.3zM12 3.04a.969.969 0 01-1-.96V2a1 1 0 012 0 1.038 1.038 0 01-1 1.04z" />
+      <path d="M19 12a7 7 0 1 1-7-7 7 7 0 0 1 7 7z" />
+      <path d="M12 22.96a.969.969 0 0 1-1-.96v-.08a1 1 0 0 1 2 0 1.038 1.038 0 0 1-1 1.04zm7.14-2.82a1.024 1.024 0 0 1-.71-.29l-.13-.13a1 1 0 0 1 1.41-1.41l.13.13a1 1 0 0 1 0 1.41.984.984 0 0 1-.7.29zm-14.28 0a1.024 1.024 0 0 1-.71-.29 1 1 0 0 1 0-1.41l.13-.13a1 1 0 0 1 1.41 1.41l-.13.13a1 1 0 0 1-.7.29zM22 13h-.08a1 1 0 0 1 0-2 1.038 1.038 0 0 1 1.04 1 .969.969 0 0 1-.96 1zM2.08 13H2a1 1 0 0 1 0-2 1.038 1.038 0 0 1 1.04 1 .969.969 0 0 1-.96 1zm16.93-7.01a1.024 1.024 0 0 1-.71-.29 1 1 0 0 1 0-1.41l.13-.13a1 1 0 0 1 1.41 1.41l-.13.13a.984.984 0 0 1-.7.29zm-14.02 0a1.024 1.024 0 0 1-.71-.29l-.13-.14a1 1 0 0 1 1.41-1.41l.13.13a1 1 0 0 1 0 1.41.97.97 0 0 1-.7.3zM12 3.04a.969.969 0 0 1-1-.96V2a1 1 0 0 1 2 0 1.038 1.038 0 0 1-1 1.04z" />
     </g>
   </svg>
 );
@@ -141,7 +141,6 @@ export const GitIcon = (props: IconSvgProps) => (
     fill="none"
     stroke="currentColor"
     strokeWidth="2"
-
     strokeLinecap="round"
     strokeLinejoin="round"
   >
@@ -150,7 +149,6 @@ export const GitIcon = (props: IconSvgProps) => (
     <path d="M12 16h.01" />
   </svg>
 );
-
 
 export const HeartFilledIcon = ({
   size = 24,
@@ -176,7 +174,6 @@ export const HeartFilledIcon = ({
     />
   </svg>
 );
-
 
 export const SearchIcon = (props: IconSvgProps) => (
   <svg
@@ -223,34 +220,54 @@ export const RocketIcon = (props: IconSvgProps) => (
   </svg>
 );
 
-export const NetworkIcon = (props: IconSvgProps) => (
-  <svg
-    {...props}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="M9 2H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 2v20m6-20v20M3 8v8a2 2 0 0 0 2 2h4m-6-10h18M3 8a2 2 0 0 1 2-2h4m10 14h4a2 2 0 0 0 2-2v-4m-6 6h-4m10-6v8a2 2 0 0 1-2 2h-4" />
-  </svg>
-);
+export const NetworkIcon: React.FC<IconSvgProps> = ({
+  size = 24,
+  width,
+  height,
+  ...props
+}) => {
+  return (
+    <svg
+      height={size || height}
+      width={size || width}
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path
+        d="M15 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-3-3a3 3 0 0 0-3 3v1h2v-1a1 1 0 0 1 2 0v1h2v-1a3 3 0 0 0-3-3zm0-9a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm0-2a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm8 11a1 1 0 1 0 0 2 1 1 0 0 0 0-2zM4 17a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+};
 
-export const ShieldIcon = (props: IconSvgProps) => (
-  <svg
-    {...props}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-    <path d="m9 12 2 2 4-4" />
-  </svg>
-);
+export const ShieldIcon: React.FC<IconSvgProps> = ({
+  size = 24,
+  width,
+  height,
+  ...props
+}) => {
+  return (
+    <svg
+      height={size || height}
+      width={size || width}
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path
+        d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
 
 export const ScaleIcon = (props: IconSvgProps) => (
   <svg
@@ -322,3 +339,120 @@ export const MoonIcon = (props: any) => (
     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
   </svg>
 );
+
+export const LockIcon: React.FC<IconSvgProps> = ({
+  size = 24,
+  width,
+  height,
+  ...props
+}) => {
+  return (
+    <svg
+      height={size || height}
+      width={size || width}
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path
+        d="M12 15a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-3-3a3 3 0 0 0-3 3v1a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3v-1a3 3 0 0 0-3-3H9zm0-2h6a5 5 0 0 1 5 5v1a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5v-1a5 5 0 0 1 5-5zm3-6a3 3 0 0 0-3 3v2h2V7a1 1 0 0 1 2 0v2h2V7a3 3 0 0 0-3-3z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+};
+
+export const ServerIcon: React.FC<IconSvgProps> = ({
+  size = 24,
+  width,
+  height,
+  ...props
+}) => {
+  return (
+    <svg
+      height={size || height}
+      width={size || width}
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path
+        d="M5 12h14M5 12a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2M5 12a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2m-8-3v.01M7 9v.01M7 15v.01M11 15v.01M15 15v.01"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
+
+export const CloudIcon: React.FC<IconSvgProps> = ({
+  size = 24,
+  width,
+  height,
+  ...props
+}) => {
+  return (
+    <svg
+      height={size || height}
+      width={size || width}
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path
+        d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
+
+export const DatabaseIcon: React.FC<IconSvgProps> = ({
+  size = 24,
+  width,
+  height,
+  ...props
+}) => {
+  return (
+    <svg
+      height={size || height}
+      width={size || width}
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path
+        d="M12 8c4.42 0 8-1.79 8-4s-3.58-4-8-4-8 1.79-8 4 3.58 4 8 4z"
+        fill="currentColor"
+        fillOpacity="0.3"
+      />
+      <path
+        d="M4 6v2c0 2.21 3.58 4 8 4s8-1.79 8-4V6"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+      <path
+        d="M4 12v2c0 2.21 3.58 4 8 4s8-1.79 8-4v-2"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+      <path
+        d="M4 18v2c0 2.21 3.58 4 8 4s8-1.79 8-4v-2"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+};
