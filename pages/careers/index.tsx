@@ -225,10 +225,12 @@ export default function CareersPage() {
 
   const handleApplicationSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!selectedPosition) return;
-
-    setSubmitStatus('submitting');
+    
+    if (submitStatus === 'submitting') return;
+    
     try {
+      setSubmitStatus('submitting');
+      
       const response = await fetch('/api/submit-application', {
         method: 'POST',
         headers: {
@@ -236,12 +238,16 @@ export default function CareersPage() {
         },
         body: JSON.stringify({
           position: selectedPosition,
-          application: applicationData
+          application: applicationData,
         }),
       });
-
-      if (!response.ok) throw new Error('Submission failed');
-
+      
+      const data = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(data.message || 'Submission failed');
+      }
+      
       setSubmitStatus('success');
       setTimeout(() => {
         setIsModalOpen(false);
@@ -254,9 +260,11 @@ export default function CareersPage() {
         });
         setSubmitStatus('idle');
       }, 2000);
+      
     } catch (error) {
-      setSubmitStatus('error');
       console.error('Application submission error:', error);
+      setSubmitStatus('error');
+      setTimeout(() => setSubmitStatus('idle'), 3000);
     }
   };
 

@@ -21,6 +21,20 @@ const typeColors = {
   Operations: 0x10b981,  
 };  
 
+type ApplicationData = {
+  name: string;
+  email: string;
+  experience: string;
+  portfolio?: string;
+  message?: string;
+};
+
+type Position = {
+  title: string;
+  type: string;
+  commitment: string;
+};
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method not allowed' });
@@ -33,6 +47,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return res.status(400).json({ message: 'Missing required fields' });
     }
 
+    // Validate required fields
+    if (!application.name || !application.email || !application.experience) {
+      return res.status(400).json({ message: 'Missing required application fields' });
+    }
+
+    // Send to Discord webhook
     const timestamp = Date.now();
     const hash = crypto
       .createHmac('sha256', WEBHOOK_KEY!)
@@ -41,8 +61,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     const formattedExperience = application.experience
       .split('\n')
-      .map(line => line.trim())
-      .filter(line => line.length > 0)
+      .map((line: string) => line.trim())
+      .filter((line: string) => line.length > 0)
       .join('\n• ');
 
     const discordEmbed = {
@@ -68,7 +88,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         ],
         footer: {
           text: 'Veloce Careers',
-          icon_url: 'https://veloce.dev/logo.png' 
+          icon_url: 'https://i.imgur.com/C2fTKQ1.png' 
         },
         timestamp: new Date().toISOString()
       }]
@@ -104,26 +124,34 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       throw new Error('Discord webhook failed');
     }
 
-    const transporter = nodemailer.createTransport(emailConfig);
-    await transporter.sendMail({
-      from: process.env.SMTP_FROM,
-      to: application.email,
-      subject: `Application Received - ${position.title} at Veloce`,
-      html: `
-        <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #4f46e5;">Thank you for applying!</h2>
-          <p>Hi ${application.name},</p>
-          <p>We've received your application for the ${position.title} position at Veloce.</p>
-          <p>Our team will review your application and get back to you soon.</p>
-          <div style="margin: 24px 0; padding: 16px; background: #f3f4f6; border-radius: 8px;">
-            <p style="margin: 0;"><strong>Position:</strong> ${position.title}</p>
-            <p style="margin: 8px 0;"><strong>Type:</strong> ${position.type}</p>
-            <p style="margin: 0;"><strong>Commitment:</strong> ${position.commitment}</p>
-          </div>
-          <p>Best regards,<br>The Veloce Team</p>
-        </div>
-      `
-    });
+    // Try to send email, but don't fail if it doesn't work
+    try {
+      if (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS) {
+        const transporter = nodemailer.createTransport(emailConfig);
+        await transporter.sendMail({
+          from: process.env.SMTP_FROM,
+          to: application.email,
+          subject: `Application Received - ${position.title} at Veloce`,
+          html: `
+            <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
+              <h2 style="color: #4f46e5;">Thank you for applying!</h2>
+              <p>Hi ${application.name},</p>
+              <p>We've received your application for the ${position.title} position at Veloce.</p>
+              <p>Our team will review your application and get back to you soon.</p>
+              <div style="margin: 24px 0; padding: 16px; background: #f3f4f6; border-radius: 8px;">
+                <p style="margin: 0;"><strong>Position:</strong> ${position.title}</p>
+                <p style="margin: 8px 0;"><strong>Type:</strong> ${position.type}</p>
+                <p style="margin: 0;"><strong>Commitment:</strong> ${position.commitment}</p>
+              </div>
+              <p>Best regards,<br>The Veloce Team</p>
+            </div>
+          `
+        });
+      }
+    } catch (emailError) {
+      console.error('Email sending failed:', emailError);
+      // Don't fail the request if email fails
+    }
 
     return res.status(200).json({ message: 'Application submitted successfully' });
   } catch (error) {
